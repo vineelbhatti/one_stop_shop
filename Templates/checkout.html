@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <title>checkout</title>
+{% extends 'bootstrap/base.html' %}
+{% block title %}
+One Stop Shop
+{% endblock %}
+{% block content %}
+    <button onclick="window.location.href = '/buy';">Back</button>
+<div class="jumbotron text-center">
+    <h1> Checkout</h1>
+</div>
+<div class="container text-center">
+<table style = "width:100%" border = "2">
+    <thread>
+    <tr>
+        <td colspan=5">Checkout</td>
+    </tr>
+    <tr>
+        <td>Title</td>
+                <td>Description</td>
+        <td>Product Price</td>
+        <td>Quantity</td>
+        <td>Total Price</td>
+
+    </tr>
+    {% for product in products %}
+    <tr>
+     <tr>
+        <td>{{product['Title']}}<br>
+    <td>{{product['Description']}}<br>
+    <td>{{product['Price']}}<br>
+     <td>{{product['bought']}}<br>
+     <td>${{product['item-total']}}<br>
+    </tr>
+    {% endfor %}
+        <tr>
+    <td class="text-center" colspan="4">
+        Total
+        <td>${{total}}</td>
+    </tr>
+    </thread>
+</table>
+
+
+{% endblock %}

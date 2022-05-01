@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<div lang="en">
+
+    {% extends 'bootstrap/base.html' %}
+{% block title %}
+One Stop Shop
+{% endblock %}
+{% block content %}
+
+<button onclick="window.location.href = '/';">Back</button>
+<div class="jumbotron text-center">
+    <h1> Buy Products</h1>
+</div>
+    <form method="POST">
+    <div class="container">
+
+
+{% for product in products %}
+        <div class="btn">
+<p><code>
+<img src="{{product['Image Link']}}" width="125" height="150"/>
+</code></p>
+<p><code>
+{{product['Title']}}
+</code></p>
+   <p><code>
+{{product['Description']}}
+        </code></p>
+        <p><code>
+${{product['Price']}} / {{product['Unit']}}
+        </code></p>
+   <p><code>
+       <select name="{{product['_id']}}">
+           <option value="0">None</option>
+           {% for n in range(1, product['allowed-units'] | int + 1) %}
+           <option value="{{n}}">{{n}}</option>
+           {% endfor %}
+       </select>
+        </code></p>
+
+    </div>
+{% endfor %}
+        </div>
+            <button type="submit" value="Submit">Checkout</button>
+</form>
+
+    {% endblock %}
+
+
